@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import TabLabel from './components/tab-label';
 import SinoPage from './pages/sino-page';
+import NativePage from './pages/native-page';
 
 function App() {
   const [tab, setTab] = useState("sino");
@@ -15,6 +16,7 @@ function App() {
       </div>
       <div>
         {tab == "sino" && <SinoPage />}
+        {tab == "native" && <NativePage />}
       </div>
     </>
   )
