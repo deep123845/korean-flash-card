@@ -44,7 +44,7 @@ export default function SinoPage() {
     const translatedNumber = translate(number);
 
     function generateRandomNumber() {
-        setNumber(Math.floor(Math.random() * (MAX_NUMBER + 1)));
+        setNumber(Math.floor(Math.random() * (MAX_NUMBER)) + 1);
     }
 
     useEffect(() => {
