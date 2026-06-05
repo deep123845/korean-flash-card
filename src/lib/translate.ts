@@ -51,11 +51,16 @@ export function sinoTranslate(number: number): string {
     let translatedList = [];
     const digits = number.toString().split("").reverse();
     for (const index in digits) {
+        const digit = digits[index];
+
         if (index != "0") {
             translatedList.push(sinoPlaceTranslations[index]);
+
+            if (digit == "1") {
+                continue;
+            }
         }
 
-        const digit = digits[index];
         if (digit != "0") {
             translatedList.push(sinoDigitTranslations[digit]);
         }
