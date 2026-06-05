@@ -3,6 +3,7 @@ import './App.css'
 import TabLabel from './components/tab-label';
 import SinoPage from './pages/sino-page';
 import NativePage from './pages/native-page';
+import TimePage from './pages/time-page';
 
 function App() {
   const [tab, setTab] = useState("sino");
@@ -17,6 +18,7 @@ function App() {
       <div>
         {tab == "sino" && <SinoPage />}
         {tab == "native" && <NativePage />}
+        {tab == "clock" && <TimePage />}
       </div>
     </>
   )

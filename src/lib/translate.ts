@@ -40,6 +40,13 @@ const nativeTensTranslations: Record<string, string> = {
     "9": "아훈",
 }
 
+const timeTranslations: Record<string, string> = {
+    "AM": "오전",
+    "PM": "오후",
+    "m": "시",
+    "h": "분",
+}
+
 export function sinoTranslate(number: number): string {
     let translatedList = [];
     const digits = number.toString().split("").reverse();
@@ -72,4 +79,15 @@ export function nativeTranslate(number: number): string {
     }
     const translatedNumber = translatedList.reverse().join(" ");
     return translatedNumber;
+}
+
+export function timeTranslate(time: string): string {
+    const hour = time.split(":")[0];
+    const minute = time.split(":")[1].split(" ")[0];
+    const ampm = time.split(":")[1].split(" ")[1];
+
+    const hourText = nativeTranslate(Number.parseInt(hour)) + timeTranslations["h"];
+    const minuteText = sinoTranslate(Number.parseInt(minute)) + timeTranslations["m"];
+
+    return timeTranslations[ampm] + " " + hourText + " " + minuteText;
 }
