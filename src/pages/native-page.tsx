@@ -1,53 +1,13 @@
 import { useEffect, useState } from "react"
+import { nativeTranslate } from "../lib/translate";
 
 const MAX_NUMBER = 99;
-
-const onesTranslation: Record<string, string> = {
-    "1": "하나",
-    "2": "둘",
-    "3": "셋",
-    "4": "넷",
-    "5": "다섯",
-    "6": "여섯",
-    "7": "일곱",
-    "8": "여덟",
-    "9": "아홉",
-}
-
-const tensTranslations: Record<string, string> = {
-    "1": "열",
-    "2": "스물",
-    "3": "서른",
-    "4": "마흔",
-    "5": "쉰",
-    "6": "여순",
-    "7": "일흔",
-    "8": "여든",
-    "9": "아훈",
-}
-
-function translate(number: number): string {
-    let translatedList = [];
-    const digits = number.toString().split("").reverse();
-    for (const index in digits) {
-        const digit = digits[index];
-        if (index == "0") {
-            translatedList.push(onesTranslation[digit]);
-        } else if (index == "1") {
-            translatedList.push(tensTranslations[digit]);
-        } else {
-            return "Number too big"
-        }
-    }
-    const translatedNumber = translatedList.reverse().join(" ");
-    return translatedNumber;
-}
 
 export default function NativePage() {
     const [number, setNumber] = useState(0);
     const [numberVisible, setNumberVisible] = useState(false);
     const [flip, setFlip] = useState(false);
-    const translatedNumber = translate(number);
+    const translatedNumber = nativeTranslate(number);
 
     function generateRandomNumber() {
         setNumber(Math.floor(Math.random() * (MAX_NUMBER)) + 1);
